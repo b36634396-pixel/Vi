@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мой Сайт | Современная визитка</title>
+    <!-- Подключение шрифтов -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Иконки Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #1e1e2f;
+            background-color: #f9fafc;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Шапка */
+        header {
+            background: white;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(8px);
+            background: rgba(255,255,255,0.9);
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 0;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.8rem;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #1e1e2f;
+            font-weight: 500;
+            margin-left: 32px;
+            transition: color 0.2s;
+            font-size: 1rem;
+        }
+
+        nav a:hover {
+            color: #2563eb;
+        }
+
+        /* Главный баннер */
+        .hero {
+            padding: 80px 0 100px;
+            text-align: center;
+            background: linear-gradient(145deg, #ffffff 0%, #f0f4ff 100%);
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            letter-spacing: -1px;
+            margin-bottom: 24px;
+            color: #0f172a;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: #475569;
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 36px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.25s;
+            font-size: 1rem;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: #2563eb;
+            color: white;
+            box-shadow: 0 10px 20px -8px rgba(37, 99, 235, 0.4);
+        }
+
+        .btn-primary:hover {
+            background: #1d4ed8;
+            transform: translateY(-3px);
+            box-shadow: 0 18px 28px -8px rgba(37, 99, 235, 0.5);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: #2563eb;
+            border: 2px solid #2563eb;
+        }
+
+        .btn-outline:hover {
+            background: #2563eb;
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* Секция услуг */
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 16px;
+            color: #0f172a;
+            letter-spacing: -0.5px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #64748b;
+            max-width: 600px;
+            margin: 0 auto 56px;
+            font-size: 1.1rem;
+        }
+
+        .services {
+            padding: 100px 0;
+            background: white;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 32px;
+        }
+
+        .service-card {
+            background: #ffffff;
+            border-radius: 28px;
+            padding: 36px 28px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.02);
+            transition: all 0.25s;
+            border: 1px solid #eef2f6;
+            text-align: center;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 30px 40px -20px rgba(0,0,0,0.15);
+            border-color: #dbe7fe;
+        }
+
+        .service-icon {
+            font-size: 2.8rem;
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 24px;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .service-card p {
+            color: #475569;
+        }
+
+        /* О нас */
+        .about {
+            padding: 100px 0;
+            background: #f1f5f9;
+        }
+
+        .about-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            flex-wrap: wrap;
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .about-text h2 {
+            font-size: 2.2rem;
+            margin-bottom: 24px;
+            color: #0f172a;
+            font-weight: 700;
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+            color: #334155;
+            font-size: 1.05rem;
+        }
+
+        .about-image {
+            flex: 1;
+            min-width: 280px;
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            border-radius: 40px;
+            padding: 6px;
+            box-shadow: 0 25px 40px -20px rgba(37, 99, 235, 0.5);
+        }
+
+        .about-image-inner {
+            background: white;
+            border-radius: 36px;
+            padding: 40px 30px;
+            text-align: center;
+        }
+
+        .about-image-inner i {
+            font-size: 4rem;
+            color: #2563eb;
+            margin-bottom: 20px;
+        }
+
+        .about-image-inner h3 {
+            font-size: 1.8rem;
+            margin-bottom: 12px;
+        }
+
+        .about-image-inner p {
+            color: #475569;
+        }
+
+        /* Контакты */
+        .contact {
+            padding: 100px 0;
+            background: white;
+        }
+
+        .contact-form {
+            max-width: 640px;
+            margin: 0 auto;
+            background: #f8fafc;
+            padding: 48px 40px;
+            border-radius: 40px;
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.03);
+            border: 1px solid #eef2f6;
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #1e293b;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 16px 20px;
+            border: 2px solid #e2e8f0;
+            border-radius: 24px;
+            font-family: inherit;
+            font-size: 1rem;
+            background: white;
+            transition: 0.2s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #2563eb;
+            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+        }
+
+        .form-group textarea {
+            min-height: 140px;
+            resize: vertical;
+        }
+
+        .btn-submit {
+            width: 100%;
+            border: none;
+            font-size: 1rem;
+        }
+
+        /* Подвал */
+        footer {
+            background: #0f172a;
+            color: #cbd5e1;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-bottom: 20px;
+        }
+
+        .social-links a {
+            color: #cbd5e1;
+            font-size: 1.6rem;
+            transition: all 0.2s;
+        }
+
+        .social-links a:hover {
+            color: white;
+            transform: scale(1.1);
+        }
+
+        footer p {
+            font-size: 0.95rem;
+            opacity: 0.8;
+        }
+
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.4rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .header-inner {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            nav a {
+                margin: 0 16px;
+                font-size: 0.95rem;
+            }
+
+            .section-title {
+                font-size: 1.9rem;
+            }
+
+            .about-wrapper {
+                flex-direction: column;
+                gap: 40px;
+            }
+
+            .contact-form {
+                padding: 32px 24px;
+            }
+
+            .btn-group {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 280px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Шапка сайта -->
+    <header>
+        <div class="container header-inner">
+            <div class="logo">NovaSite</div>
+            <nav>
+                <a href="#services">Услуги</a>
+                <a href="#about">О нас</a>
+                <a href="#contact">Контакты</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Главный экран -->
+    <section class="hero">
+        <div class="container">
+            <h1>Создаём <span>цифровые</span><br>продукты будущего</h1>
+            <p>Современные сайты, интерфейсы и брендинг. Мы помогаем бизнесу выделяться и расти с помощью дизайна и технологий.</p>
+            <div class="btn-group">
+                <a href="#contact" class="btn btn-primary">Обсудить проект</a>
+                <a href="#services" class="btn btn-outline">Наши услуги</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Услуги -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2 class="section-title">Что мы делаем</h2>
+            <p class="section-subtitle">Полный цикл разработки и дизайна для вашего бизнеса</p>
+            <div class="services-grid">
+                <div class="service-card">
+                    <i class="fas fa-code service-icon"></i>
+                    <h3>Веб-разработка</h3>
+                    <p>Создаём быстрые, адаптивные и безопасные сайты на современных технологиях.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-paint-brush service-icon"></i>
+                    <h3>UI/UX Дизайн</h3>
+                    <p>Проектируем интерфейсы, которые удобны и приятны для пользователей.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-chart-line service-icon"></i>
+                    <h3>Брендинг</h3>
+                    <p>Разрабатываем айдентику, логотипы и визуальные стратегии для компаний.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-mobile-alt service-icon"></i>
+                    <h3>Мобильные приложения</h3>
+                    <p>Кроссплатформенные приложения для iOS и Android с нативным опытом.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- О нас -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-wrapper">
+                <div class="about-text">
+                    <h2>Команда профессионалов</h2>
+                    <p>Мы — студия цифровых продуктов, работающая с 2018 года. За это время реализовали более 120 проектов для клиентов из 12 стран.</p>
+                    <p>Наш подход основан на глубоком погружении в задачу, аналитике и любви к деталям. Мы не просто делаем сайты — мы создаём опыт взаимодействия с брендом.</p>
+                    <p>Верьте в качество, инновации и прозрачность. Давайте создадим что-то крутое вместе!</p>
+                </div>
+                <div class="about-image">
+                    <div class="about-image-inner">
+                        <i class="fas fa-users"></i>
+                        <h3>12+ экспертов</h3>
+                        <p>дизайнеры, разработчики, маркетологи</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Контакты -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Свяжитесь с нами</h2>
+            <p class="section-subtitle">Расскажите о вашей идее — мы ответим в течение дня</p>
+            <form class="contact-form" onsubmit="alert('Спасибо! Ваше сообщение отправлено (демо).'); return false;">
+                <div class="form-group">
+                    <label for="name">Ваше имя</label>
+                    <input type="text" id="name" placeholder="Иван Петров" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" placeholder="ivan@example.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Сообщение</label>
+                    <textarea id="message" placeholder="Опишите ваш проект..." required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary btn-submit">Отправить заявку</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Подвал -->
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="#" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
+                <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            </div>
+            <p>© 2025 NovaSite. Все права защищены.</p>
+        </div>
+    </footer>
+</body>
+</html>
